@@ -1,0 +1,64 @@
+<%= form_with(model: account, local: true) do |form| %>
+  <% if account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+        <% account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%#= form.label :ac_no %>
+    <%#= form.text_field :ac_no %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%#= hidden_field_tag :user_id, current_user.id%>
+  </div>
+
+  <div class="field">
+    <%= form.label :ac_type %>
+    <%#= form.text_field :ac_type %>
+    <%= form.select :ac_type, ['Saving', 'Open'], :prompt => 'Select One' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :opening_date %>
+    <%= form.datetime_select :opening_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :closing_date %>
+    <%= form.datetime_select :closing_date %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, ['Active', 'Inactive'], :prompt => 'Select One' %>
+  </div>
+
+  <%= form.fields_for :transactions do |f|%>
+      <div class="field">
+        <%= f.label :tx_amount %>
+        <%= f.text_field :tx_amount %>
+      </div>
+      <div class="field">
+        <%= f.label :tx_date %>
+        <%= f.datetime_select :tx_date %>
+      </div>
+
+      <div class="field">
+        <%= f.label :tx_type %>
+        <%= f.select :tx_type, ['Credit'], :prompt => 'Select One' %>
+      </div>
+
+
+  <%end%>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
