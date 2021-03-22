@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. download zip
+2. Unzip the zip
+3. cd folder
+4. configure database credentials in database.yml
+5. bundle install
+6. bundle exec rails webpacker:compile
+7. rails db:create
+8. rails db:migrate
+9. signup in application
+10. create account with initial amount
+11. create debit and credit transactions
